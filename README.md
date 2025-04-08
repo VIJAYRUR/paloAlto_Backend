@@ -1,6 +1,6 @@
 # paloAlto_Backend
 
-This is the backend API for the FitFoodie application, built with Flask.
+This is the backend API for the FitFoodie application, built with Flask and MongoDB.
 
 ## Features
 
@@ -15,10 +15,11 @@ This is the backend API for the FitFoodie application, built with Flask.
 ## Tech Stack
 
 - Flask: Web framework
-- Flask-SQLAlchemy: ORM for database operations
+- PyMongo: MongoDB driver for Python
+- Flask-PyMongo: MongoDB integration for Flask
 - Flask-JWT-Extended: JWT authentication
 - Flask-CORS: Cross-Origin Resource Sharing
-- SQLite (development) / PostgreSQL (production)
+- MongoDB Atlas (cloud database)
 
 ## Getting Started
 
@@ -42,12 +43,11 @@ This is the backend API for the FitFoodie application, built with Flask.
    pip install -r requirements.txt
    ```
 5. Set up environment variables (copy `.env.example` to `.env` and modify as needed)
-6. Initialize the database:
-   ```
-   flask db init
-   flask db migrate
-   flask db upgrade
-   ```
+6. Set up MongoDB Atlas:
+   - Create a MongoDB Atlas account
+   - Create a new cluster
+   - Create a database user
+   - Get your connection string and add it to the `.env` file
 7. Run the development server:
    ```
    flask run
@@ -101,10 +101,19 @@ The API returns appropriate HTTP status codes and error messages in JSON format:
 
 ## Database Schema
 
-The database consists of the following main tables:
+The database consists of the following main collections:
 
 - `users`: User information and preferences
 - `influencers`: Influencer profiles linked to users
 - `meals`: Meal information with macronutrients and instructions
-- `user_favorites`: Association table for user-meal favorites
-- `user_following`: Association table for user-influencer following
+- `orders`: Order information with items and status
+
+## Documentation
+
+Comprehensive documentation is available in the `docs` folder:
+
+- [Setup Guide](docs/SETUP.md): Instructions for setting up and running the backend
+- [Architecture Overview](docs/ARCHITECTURE.md): Details about the backend architecture
+- [API Documentation](docs/API.md): Information about the API endpoints
+- [Current Implementation Status](docs/IMPLEMENTATION_STATUS.md): Current state of the backend implementation
+- [Future Tasks](docs/FUTURE_TASKS.md): Planned enhancements and future development tasks
